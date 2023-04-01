@@ -1,0 +1,73 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &3460969175723011798
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3460969175723011784}
+  - component: {fileID: 3460969175723011799}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3460969175723011784
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3460969175723011798}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3460969175723011799
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3460969175723011798}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00d24423dc64040498db59dcc0ede18b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  footsteps:
+    Guid:
+      Data1: -1165729559
+      Data2: 1246893615
+      Data3: 1201478310
+      Data4: 993476673
+    Path: event:/SFX/Footsteps
+  seaWind:
+    Guid:
+      Data1: -474631619
+      Data2: 1202093921
+      Data3: 169447868
+      Data4: 1117770879
+    Path: event:/SFX/SeaWind
+  birdCaws:
+    Guid:
+      Data1: 431386539
+      Data2: 1294427955
+      Data3: -1371131234
+      Data4: 1575538411
+    Path: event:/SFX/BirdCaws
+  mainSong:
+    Guid:
+      Data1: 250932377
+      Data2: 1202915934
+      Data3: -2018656081
+      Data4: 980260644
+    Path: event:/Music/MainSong
