@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 8112843281749084015}
   - component: {fileID: 8112843281749084000}
   - component: {fileID: 8112843281749084001}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Character
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -140,7 +140,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!61 &8112843281749084001
 BoxCollider2D:
   m_ObjectHideFlags: 0
