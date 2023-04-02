@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="ParameterPreset" id="{7134d214-1fde-4389-8484-3cb6c90f9042}">
+		<property name="name">
+			<value>Interactable</value>
+		</property>
+		<relationship name="folder">
+			<destination>{83815440-b9a1-41e2-87b4-76b4d3e7c141}</destination>
+		</relationship>
+		<relationship name="parameter">
+			<destination>{adba5540-08f9-40b7-a26b-8f4f96e4868d}</destination>
+		</relationship>
+	</object>
+	<object class="GameParameter" id="{adba5540-08f9-40b7-a26b-8f4f96e4868d}">
+		<property name="parameterType">
+			<value>1</value>
+		</property>
+		<property name="maximum">
+			<value>2</value>
+		</property>
+		<property name="isReadOnly">
+			<value>true</value>
+		</property>
+		<property name="initialValue">
+			<value>0</value>
+		</property>
+	</object>
+</objects>
