@@ -10,6 +10,9 @@ public class WinterMusicController : Singleton<WinterMusicController>
 {
     [SerializeField]
     LayerMask icicleLayer;
+
+    [SerializeField]
+    ParticleController winterParticles;
     
     BoxCollider2D boxCollider2D;
     EventInstance song;
@@ -85,10 +88,12 @@ public class WinterMusicController : Singleton<WinterMusicController>
 
     void OnTriggerEnter2D(Collider2D col) {
         song.start();
+        winterParticles.FadeIn();
     }
 
     void OnTriggerExit2D(Collider2D col) {
         song.stop(STOP_MODE.ALLOWFADEOUT);
+        winterParticles.FadeOut();
     }
 
     void Update() {
