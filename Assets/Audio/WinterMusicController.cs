@@ -6,31 +6,10 @@ using FMOD.Studio;
 using UnityEngine;
 
 [RequireComponent(typeof(BoxCollider2D))]
-public class WinterMusicController : Singleton<WinterMusicController>
+public class WinterMusicController : MusicAreaController
 {
     [SerializeField]
     LayerMask icicleLayer;
-
-    [SerializeField]
-    ParticleController winterParticles;
-    
-    BoxCollider2D boxCollider2D;
-
-    void Start() {
-        boxCollider2D = GetComponent<BoxCollider2D>();
-    }
-
-    void OnTriggerEnter2D(Collider2D col) {
-        MusicManager.ChangeToMusicArea(MusicArea.Winter);
-        winterParticles.FadeIn();
-    }
-
-    void OnTriggerExit2D(Collider2D col) {
-        if (MusicManager.GetCurrentMusicArea() == MusicArea.Winter) {
-            MusicManager.ChangeToMusicArea(MusicArea.None);
-        }
-        winterParticles.FadeOut();
-    }
 
     void Update() {
 

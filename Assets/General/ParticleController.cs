@@ -18,15 +18,6 @@ public class ParticleController : MonoBehaviour
         renderer = GetComponent<Renderer>();
     }
 
-    public void Update() {
-        if (Input.GetKeyDown(KeyCode.O)) {
-            FadeIn();
-        }
-        if (Input.GetKeyDown(KeyCode.P)) {
-            FadeOut();
-        }
-    }
-
     public void FadeIn() {
         if (coroutine != null)
             StopCoroutine(coroutine);
