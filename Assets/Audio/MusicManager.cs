@@ -19,6 +19,7 @@ public class MusicManager : Singleton<MusicManager>
     [HideInInspector]
     public bool isAllowedToPlayIcicle = false;
     MusicArea currentArea = MusicArea.None;
+    MusicArea lastArea = MusicArea.None;
     
     #region FMOD_CALLBACKS
     
@@ -85,7 +86,12 @@ public class MusicManager : Singleton<MusicManager>
     }
 
     public static void ChangeToMusicArea(MusicArea area) {
+        
+        if (area == GetCurrentMusicArea()) return;
+        
         if (Instance) {
+            Instance.lastArea = Instance.currentArea;
+
             //Update fmod area parameter only if not none
             if (area != MusicArea.None)
                 Instance.song.setParameterByNameWithLabel("MusicArea", area.ToString());
@@ -113,7 +119,7 @@ public class MusicManager : Singleton<MusicManager>
     
     void OnGUI()
     {
-        GUILayout.Box(String.Format("Current Bar = {0}, Last Marker = {1}", timelineInfo.currentMusicBar, (string)timelineInfo.lastMarker));
+        GUILayout.Box(String.Format("Current Bar = {0}, Last Marker = {1}, Current Area = {2}", timelineInfo.currentMusicBar, (string)timelineInfo.lastMarker, currentArea.ToString()));
     }
     
 }
