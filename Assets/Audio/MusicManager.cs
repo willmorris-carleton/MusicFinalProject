@@ -8,7 +8,8 @@ using UnityEngine;
 public enum MusicArea {
     None,
     Winter,
-    Fire
+    Fire,
+    Grass
 }
 
 public class MusicManager : Singleton<MusicManager>
