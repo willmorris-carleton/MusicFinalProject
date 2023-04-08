@@ -140,11 +140,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8112843281749084014, guid: 5412a68aea1a98448ae9ccfe7634d48d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 4.03
+      value: 0.03
       objectReference: {fileID: 0}
     - target: {fileID: 8112843281749084014, guid: 5412a68aea1a98448ae9ccfe7634d48d, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -5.58
+      value: 0.24
       objectReference: {fileID: 0}
     - target: {fileID: 8112843281749084014, guid: 5412a68aea1a98448ae9ccfe7634d48d, type: 3}
       propertyPath: m_LocalPosition.z
@@ -509,7 +509,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff568af80e09f6a4b98dd55db3eee95a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  musicAreaType: 2
+  musicAreaType: 3
   particles: {fileID: 1222587776}
   sceneDirectionalLight: {fileID: 875163387}
   playerFlashLight: {fileID: 836363509}

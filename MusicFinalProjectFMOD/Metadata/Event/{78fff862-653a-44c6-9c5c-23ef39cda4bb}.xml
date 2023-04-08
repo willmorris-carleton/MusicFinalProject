@@ -1514,6 +1514,9 @@
 		<property name="length">
 			<value>4.6153846153845919</value>
 		</property>
+		<property name="triggerConditionMode">
+			<value>1</value>
+		</property>
 		<property name="looping">
 			<value>2</value>
 		</property>
@@ -1525,6 +1528,7 @@
 		</relationship>
 		<relationship name="triggerConditions">
 			<destination>{80e0a7bb-a95c-4315-addc-d96a3bfb3cfb}</destination>
+			<destination>{b906276f-e57f-4836-98b4-c2d0089da8ea}</destination>
 		</relationship>
 	</object>
 	<object class="LoopRegion" id="{3e804346-8239-4002-99f0-a7c64bfd575c}">
@@ -1899,6 +1903,17 @@
 		</property>
 		<property name="maximum">
 			<value>2</value>
+		</property>
+		<relationship name="parameter">
+			<destination>{abff321c-2652-4b43-a6d2-f75b239073fb}</destination>
+		</relationship>
+	</object>
+	<object class="ParameterCondition" id="{b906276f-e57f-4836-98b4-c2d0089da8ea}">
+		<property name="minimum">
+			<value>3</value>
+		</property>
+		<property name="maximum">
+			<value>3</value>
 		</property>
 		<relationship name="parameter">
 			<destination>{abff321c-2652-4b43-a6d2-f75b239073fb}</destination>
