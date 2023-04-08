@@ -8,7 +8,7 @@ using FMODUnity;
 public class AudioManager : Singleton<AudioManager>
 {
     public EventReference footsteps;
-    public EventReference winterSong;
+    public EventReference mainSong;
 
     List<EventInstance> eventInstances = new List<EventInstance>();
 

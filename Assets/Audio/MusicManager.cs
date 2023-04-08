@@ -1,28 +1,29 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using FMOD.Studio;
+using System;
 using UnityEngine;
 
-[RequireComponent(typeof(BoxCollider2D))]
-public class WinterMusicController : Singleton<WinterMusicController>
+public enum MusicArea {
+    None,
+    Winter,
+    Fire
+}
+
+public class MusicManager : Singleton<MusicManager>
 {
-    [SerializeField]
-    LayerMask icicleLayer;
-
-    [SerializeField]
-    ParticleController winterParticles;
     
-    BoxCollider2D boxCollider2D;
     EventInstance song;
-    
-
-    bool isAllowedToPlayIcicle = false;
+    [HideInInspector]
+    public bool isAllowedToPlayIcicle = false;
+    MusicArea currentArea = MusicArea.None;
     
     #region FMOD_CALLBACKS
-    // Variables that are modified in the callback need to be part of a seperate class.
-    // This class needs to be 'blittable' otherwise it can't be pinned in memory.
+    
+    TimelineInfo timelineInfo;
+    GCHandle timelineHandle;
+    
     [StructLayout(LayoutKind.Sequential)]
     class TimelineInfo
     {
@@ -71,59 +72,47 @@ public class WinterMusicController : Singleton<WinterMusicController>
         }
         return FMOD.RESULT.OK;
     }
+    
     #endregion
     
-    TimelineInfo timelineInfo;
-    GCHandle timelineHandle;
-    
     void Start() {
-        boxCollider2D = GetComponent<BoxCollider2D>();
-        
         timelineInfo = new TimelineInfo();
-        song = AudioManager.Instance.CreateEventInstance(AudioManager.Instance.winterSong);
+        song = AudioManager.Instance.CreateEventInstance(AudioManager.Instance.mainSong);
         timelineHandle = GCHandle.Alloc(timelineInfo, GCHandleType.Pinned);
         song.setUserData(GCHandle.ToIntPtr(timelineHandle));
-        song.setCallback(new FMOD.Studio.EVENT_CALLBACK(BeatEventCallback), FMOD.Studio.EVENT_CALLBACK_TYPE.TIMELINE_BEAT | FMOD.Studio.EVENT_CALLBACK_TYPE.TIMELINE_MARKER);
+        song.setCallback(BeatEventCallback, FMOD.Studio.EVENT_CALLBACK_TYPE.TIMELINE_BEAT | FMOD.Studio.EVENT_CALLBACK_TYPE.TIMELINE_MARKER);
     }
 
-    void OnTriggerEnter2D(Collider2D col) {
-        song.start();
-        winterParticles.FadeIn();
-    }
-
-    void OnTriggerExit2D(Collider2D col) {
-        song.stop(STOP_MODE.ALLOWFADEOUT);
-        winterParticles.FadeOut();
-    }
-
-    void Update() {
-
-        if (Input.GetMouseButton(0)) {
-            song.setParameterByName("PlayingNote", 1);
+    public static void ChangeToMusicArea(MusicArea area) {
+        if (Instance) {
+            //Update fmod area parameter only if not none
+            if (area != MusicArea.None)
+                Instance.song.setParameterByNameWithLabel("MusicArea", area.ToString());
+            
+            //If transitioning from something to nothing, flag fmod to stop current song
+            if (area == MusicArea.None && Instance.currentArea != MusicArea.None) Instance.song.stop(STOP_MODE.ALLOWFADEOUT);
+            
+            //If transitioning from nothing to something, flag fmod to start current song
+            if (area != MusicArea.None && Instance.currentArea == MusicArea.None) Instance.song.start();
+            
+            Instance.currentArea = area;
         }
-        else {
-            song.setParameterByName("PlayingNote", 0);
-        }
-
-        RaycastHit2D hit;
-        hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.up, 0.1f, icicleLayer);
-        if (hit.collider) {
-            IcicleController icicle = hit.collider.GetComponent<IcicleController>();
-            if (icicle) {
-                Debug.Log(icicle.noteIndex);
-                song.setParameterByName("Note", icicle.noteIndex);
-                return;
-            }
-        }
-        song.setParameterByName("Note", 0);
     }
 
-    public static bool isPlayable() {
-        return Instance.isAllowedToPlayIcicle;
+    public static EventInstance GetSongInstance() {
+        return Instance.song;
+    }
+
+    public static MusicArea GetCurrentMusicArea() {
+        if (Instance) {
+            return Instance.currentArea;
+        }
+        return MusicArea.None;
     }
     
     void OnGUI()
     {
         GUILayout.Box(String.Format("Current Bar = {0}, Last Marker = {1}", timelineInfo.currentMusicBar, (string)timelineInfo.lastMarker));
     }
+    
 }
