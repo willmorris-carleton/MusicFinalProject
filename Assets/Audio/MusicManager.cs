@@ -30,6 +30,7 @@ public class MusicManager : Singleton<MusicManager>
     class TimelineInfo
     {
         public int currentMusicBar = 0;
+        public int currentMusicBeat = 0;
         public FMOD.StringWrapper lastMarker = new FMOD.StringWrapper();
     }
 
@@ -54,7 +55,16 @@ public class MusicManager : Singleton<MusicManager>
                 case FMOD.Studio.EVENT_CALLBACK_TYPE.TIMELINE_BEAT:
                 {
                     var parameter = (FMOD.Studio.TIMELINE_BEAT_PROPERTIES)Marshal.PtrToStructure(parameterPtr, typeof(FMOD.Studio.TIMELINE_BEAT_PROPERTIES));
+                    
+                    if (parameter.bar > timelineInfo.currentMusicBar) {
+                        BarOccured();
+                    }
                     timelineInfo.currentMusicBar = parameter.bar;
+                    
+                    if (parameter.beat > timelineInfo.currentMusicBeat) {
+                        BeatOccured();
+                    }
+                    timelineInfo.currentMusicBeat = parameter.beat;
                 }
                     break;
                 case FMOD.Studio.EVENT_CALLBACK_TYPE.TIMELINE_MARKER:
@@ -76,6 +86,27 @@ public class MusicManager : Singleton<MusicManager>
     }
     
     #endregion
+
+    static List<Action> functionsToCallWhenBeatOccurs = new List<Action>();
+    public static void SubscribeFunctionToBeat(Action func) {
+        functionsToCallWhenBeatOccurs.Add(func);
+    }
+    static void BeatOccured() {
+        foreach (Action func in functionsToCallWhenBeatOccurs) {
+            func();
+        }
+    }
+    
+    static List<Action> functionsToCallWhenBarOccurs = new List<Action>();
+    
+    public static void SubscribeFunctionToBar(Action func) {
+        functionsToCallWhenBarOccurs.Add(func);
+    }
+    static void BarOccured() {
+        foreach (Action func in functionsToCallWhenBarOccurs) {
+            func();
+        }
+    }
     
     void Start() {
         timelineInfo = new TimelineInfo();
