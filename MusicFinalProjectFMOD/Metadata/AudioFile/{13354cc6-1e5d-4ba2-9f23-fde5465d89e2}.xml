@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{13354cc6-1e5d-4ba2-9f23-fde5465d89e2}">
+		<property name="assetPath">
+			<value>Campfire Sound Effect Free Download _ Campfire Night Ambience _ Royalty Free bonfire.mp3</value>
+		</property>
+		<property name="isStreaming">
+			<value>true</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>211.59183673469389</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{522f2d14-3494-48ed-834c-85534775e554}</destination>
+		</relationship>
+	</object>
+</objects>
