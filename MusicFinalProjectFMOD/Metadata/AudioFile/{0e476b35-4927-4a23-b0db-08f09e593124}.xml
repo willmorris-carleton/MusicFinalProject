@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{0e476b35-4927-4a23-b0db-08f09e593124}">
+		<property name="assetPath">
+			<value>sBackD.wav</value>
+		</property>
+		<property name="isStreaming">
+			<value>true</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>34.285714285714285</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{522f2d14-3494-48ed-834c-85534775e554}</destination>
+		</relationship>
+	</object>
+</objects>

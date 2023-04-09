@@ -13,6 +13,8 @@ public class WinterMusicController : MusicAreaController
 
     void Update() {
 
+        if (!isInArea) return;
+        
         if (Input.GetMouseButton(0)) {
             MusicManager.GetSongInstance().setParameterByName("PlayingNote", 1);
         }
