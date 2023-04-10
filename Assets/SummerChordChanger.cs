@@ -20,7 +20,7 @@ public class SummerChordChanger : MonoBehaviour
     }
 
     void OnMouseOver() {
-        if (grassMusicController.isInArea) {
+        if (grassMusicController.isInArea && sprite.enabled) {
             MusicManager.GetSongInstance().setParameterByName("Note", noteId);
             Debug.Log("Test" + noteId);
         }

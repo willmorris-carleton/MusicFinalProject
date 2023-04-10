@@ -22,6 +22,7 @@ public class GrassMusicController : MusicAreaController
     public override void OnTriggerEnter2D(Collider2D col) {
         base.OnTriggerEnter2D(col);
         FadeIn();
+        MusicManager.GetSongInstance().setParameterByName("Note", 0);
     }
     public override void OnTriggerExit2D(Collider2D col) {
         base.OnTriggerExit2D(col);
