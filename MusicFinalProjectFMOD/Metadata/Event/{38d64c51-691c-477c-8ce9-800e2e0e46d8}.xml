@@ -164,7 +164,7 @@
 	</object>
 	<object class="LoopRegion" id="{cedaa6cf-85e3-4c24-b427-d8cfc98b369d}">
 		<property name="position">
-			<value>12.043478260869565</value>
+			<value>50.426650381142771</value>
 		</property>
 		<property name="length">
 			<value>5.7142857142857153</value>
@@ -251,7 +251,7 @@
 			<value>true</value>
 		</property>
 		<property name="triggerProbability">
-			<value>29.5</value>
+			<value>30</value>
 		</property>
 		<property name="name">
 			<value>Region E</value>
